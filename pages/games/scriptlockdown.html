@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Script Lockdown</title>
+  <link rel="stylesheet" href="../../assets\css\scriptlockdown.css">
+  <style>
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <a href="../../index.html" style="position: absolute; top: 20px; left: 20px; font-size: 0.9rem; color: #ccc; text-decoration: none; background: #222; padding: 6px 10px; border-radius: 4px;">
+      ← Return to AidenMars.com
+    </a>
+    
+    <h1>Script Lockdown</h1>
+
+    <!-- How to Menu -->
+    <div id="menu-screen">
+      <h2>🧬 How to Play</h2>
+      <p>You are trapped in a logic-locked AI system. Choose the correct code fix to bypass each layer.</p>
+      <ul>
+        <li>✅ Select the correct logic fix out of two choices.</li>
+        <li>💥 Wrong answers deduct 5 seconds.</li>
+        <li>🏆 Get 10 right before time runs out to win!</li>
+      </ul>
+      <button id="start-btn">Start Escape</button>
+    </div>
+
+    <!-- Code Display -->
+    <div id="code-block" class="hidden">
+      <pre id="pseudo-code">Initializing AI Core...</pre>
+    </div>
+
+    <!-- Win Screen -->
+    <div id="win-screen" class="end-screen hidden">
+      <h2>🧠 Escape Successful!</h2>
+      <p>You outwitted the lockdown. The AI has granted your release.</p>
+      <button onclick="location.reload()">Play Again</button>
+      <button onclick="returnToMenu()">Back to Menu</button>
+    </div>
+
+    <!-- Lose Screen -->
+    <div id="lose-screen" class="end-screen hidden">
+      <h2>💀 System Lockdown Complete</h2>
+      <p>The AI has terminated your session. Try again, logic soldier.</p>
+      <button onclick="location.reload()">Retry</button>
+      <button onclick="returnToMenu()">Back to Menu</button>
+    </div>
+
+    <!-- User Choices -->
+    <div id="choices" class="hidden">
+      <button class="choice-btn" id="choice1"></button>
+      <button class="choice-btn" id="choice2"></button>
+    </div>
+
+    <!-- Controls -->
+    <div id="controls" class="hidden">
+      <div id="timer">Time Left: <span id="time">60</span>s</div>
+      <div id="status">Status: Awaiting Command</div>
+      <div id="score">Correct Fixes: <span id="correct">0</span>/10</div>
+    </div>
+  </div>
+
+  <script src="../../assets/js/scriptlockdown.js"></script>
+  <script>
+    // Menu navigation logic
+    function returnToMenu() {
+      document.getElementById('win-screen').classList.add('hidden');
+      document.getElementById('lose-screen').classList.add('hidden');
+      document.getElementById('code-block').classList.add('hidden');
+      document.getElementById('choices').classList.add('hidden');
+      document.getElementById('controls').classList.add('hidden');
+      document.getElementById('menu-screen').classList.remove('hidden');
+      document.getElementById('status').textContent = "Status: Awaiting Command";
+      document.getElementById('pseudo-code').textContent = "Initializing AI Core...";
+    }
+
+    // Modify start button to hide menu
+    document.addEventListener('DOMContentLoaded', () => {
+      const startBtn = document.getElementById('start-btn');
+      if (startBtn) {
+        startBtn.addEventListener('click', () => {
+          document.getElementById('menu-screen').classList.add('hidden');
+          document.getElementById('code-block').classList.remove('hidden');
+          document.getElementById('choices').classList.remove('hidden');
+          document.getElementById('controls').classList.remove('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
