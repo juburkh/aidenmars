@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mind Maze</title>
+  <link rel="stylesheet" href="../../assets/css/mindmaze.css">
+</head>
+<body>
+  <div class="maze-container">
+    <a href="../games.html" class="back-btn">← Return to Games</a>
+    <h1>🧠 Mind Maze</h1>
+
+    <section id="how-to">
+      <h2>How to Play</h2>
+      <ul>
+        <li>🟦 Watch the tiles light up in a sequence.</li>
+        <li>🧠 Click the tiles in the same order.</li>
+        <li>❌ One mistake and the maze resets.</li>
+      </ul>
+    </section>
+
+    <div class="grid">
+      <div class="tile" data-id="0"></div>
+      <div class="tile" data-id="1"></div>
+      <div class="tile" data-id="2"></div>
+      <div class="tile" data-id="3"></div>
+    </div>
+
+    <div class="buttons">
+      <button id="start">Start Maze</button>
+      <button id="restart" disabled>Restart</button>
+    </div>
+
+    <p id="status">Level: 0</p>
+    <div id="high-score">High Score: <span id="high-value">0</span></div>
+    <div id="leaderboard">
+    <h3>Leaderboard</h3>
+    <ul id="score-list"></ul>
+    </div>
+  </div>
+
+  <script src="../../assets/js/mindmaze.js"></script>
+</body>
+</html>
